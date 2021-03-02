@@ -8,6 +8,17 @@ export enum HookType {
 }
 
 /**
+ * BaseHookOption
+ */
+export interface BaseHookOption {
+  prefix?: string,
+  suffix?: string,
+  name: string
+  group?: string,
+  matchObject?: Object | {}
+}
+
+/**
  * HookOption
  */
 export interface HookOption extends BaseHookOption {
@@ -28,12 +39,11 @@ export interface HookFunction extends Tap {
   fn: Function,
 }
 
-export interface BaseHookOption {
-  prefix?: string,
-  suffix?: string,
-  name: string
-  group?: string,
-  matchObject?: Object | {}
+/**
+ * EventObject
+ */
+export interface EventObject {
+  [key: string]: Function | Array<Function> | string
 }
 
 

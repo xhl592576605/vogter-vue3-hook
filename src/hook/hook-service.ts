@@ -15,7 +15,7 @@ export default class HookService {
     }
     return baseHookOption
   }
-
+  $dataCheck = new DataCheck()
   /**
    * hookStore
    */
@@ -28,13 +28,13 @@ export default class HookService {
    */
   $on(option: HookOption | string, fn?: Function | Array<Function>) {
     let _option: HookOption
-    if (DataCheck.$isString(option)) {
+    if (this.$dataCheck.$isString(option)) {
       if (!fn) {
         console.warn(`[@vogter/vue3-hook] $on: if key-func must has function`)
         return
       }
       let Hook: Array<HookFunction>
-      if (DataCheck.$isFunction(fn)) {
+      if (this.$dataCheck.$isFunction(fn)) {
         fn = [fn as Function]
       }
       Hook = (fn as Array<Function>).map((f: Function, i: Number) => {
@@ -73,7 +73,7 @@ export default class HookService {
    */
   async $emit(option: BaseHookOption | string, ...params: any[]) {
     let _option: BaseHookOption
-    if (DataCheck.$isString(option)) {
+    if (this.$dataCheck.$isString(option)) {
       _option = HookService.createBaseHookOption(option as string)
     } else {
       _option = option as BaseHookOption
@@ -99,7 +99,7 @@ export default class HookService {
    */
   $remove(option: BaseHookOption | string) {
     let _option: BaseHookOption
-    if (DataCheck.$isString(option)) {
+    if (this.$dataCheck.$isString(option)) {
       _option = HookService.createBaseHookOption(option as string)
     } else {
       _option = option as BaseHookOption
@@ -169,7 +169,7 @@ export default class HookService {
       }, { ...(h.matchObject || {}) })
       for (const mKey in matchObject) {
         let match = matchObject[mKey]
-        if (DataCheck.$isString(match)) {
+        if (this.$dataCheck.$isString(match)) {
           match = match.split(',')
           const sValue = (sourceObj[mKey] || '').split(',')
           const idx = match.findIndex((m: any) => {

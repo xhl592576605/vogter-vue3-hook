@@ -1,19 +1,19 @@
 export default class DataCheck {
   // 是否是Object对象
-  static $isObject(obj: any) {
+  $isObject(obj: any) {
     return Object.prototype.toString.call(obj) === '[object Object]'
   }
   // 是否是Array对象
-  static $isArray(obj: any) {
+  $isArray(obj: any) {
     return Array.isArray(obj)
   }
   // 是否是字符串
-  static $isString(str: any) {
+  $isString(str: any) {
     const typeStr = str instanceof String || (typeof str).toLowerCase()
     return typeStr === 'string'
   }
   // 是否是函数
-  static $isFunction(fun: any) {
+  $isFunction(fun: any) {
     return typeof fun === 'function'
   }
 
@@ -22,7 +22,7 @@ export default class DataCheck {
    * @param len 
    * @param radix 
    */
-  static $newUUID(len: number, radix: number) {
+  $newUUID(len: number, radix: number) {
     let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
     let uuid = [], i
     radix = radix || chars.length

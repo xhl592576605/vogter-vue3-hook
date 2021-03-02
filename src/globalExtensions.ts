@@ -1,18 +1,14 @@
+import { EventObject } from "./hook/hook-option";
 import HookService from "./hook/hook-service";
+import DataCheck from "./util/data-check";
 
 declare module '@vue/runtime-core' {
   export interface ComponentCustomOptions {
   }
   export interface ComponentCustomProperties {
-
-    $isObject: (obj: any) => boolean
-    $isArray: (obj: any) => boolean
-    $isString: (obj: any) => boolean
-    $isFunction: (obj: any) => boolean
-    $newUUID: (len: number, radix: number) => string
-    $initEvent: (eventDefinite: Object) => void
+    $dataCheck: DataCheck
+    $initEvent: (eventDefinite: EventObject, matchObject?: Object) => void
     $eventBus: HookService
-    eventHandler: Object
   }
 }
 declare global {
