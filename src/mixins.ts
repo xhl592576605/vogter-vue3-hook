@@ -2,9 +2,13 @@ import { defineComponent } from 'vue'
 import { EventObject, HookFunction, HookOption, HookType } from './hook/hook-option'
 import HookService from './hook/hook-service'
 export default defineComponent({
+  props: {
+    eventPrefix: String,
+    eventSuffix: String
+  },
   computed: {
     eventStore: {
-      get() {
+      get(): any {
         return this.$eventBus.hookStore
       },
       set() {
@@ -51,7 +55,7 @@ export default defineComponent({
             args: 10,
             context: false,
             Hook,
-          }, HookService.createBaseHookOption(key))
+          }, HookService.createBaseHookOption(key, this.eventPrefix, this.eventSuffix))
           return hookOption
         })
       } else {

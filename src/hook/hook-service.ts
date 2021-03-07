@@ -6,10 +6,10 @@ export default class HookService {
   static defaultGroup = 'default'
   static defaultFix = '@vogterHookFix'
   static defaultFuncName = '@vogterHookFix'
-  static createBaseHookOption(name: string) {
+  static createBaseHookOption(name: string, prefix?: string, suffix?: string) {
     let baseHookOption: BaseHookOption = {
-      prefix: HookService.defaultFix,
-      suffix: HookService.defaultFix,
+      prefix: prefix || HookService.defaultFix,
+      suffix: suffix || HookService.defaultFix,
       name,
       group: HookService.defaultGroup,
     }
